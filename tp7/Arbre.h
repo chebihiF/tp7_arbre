@@ -12,6 +12,28 @@ typedef Sheet* Tree;
 
 Sheet* createSheet(int);
 Tree createTree(int, Sheet*, Sheet*);
+void addValue(int, Tree*);
+
+
+void addValue(int value, Tree* arbre) {
+	if (arbre == NULL)
+		*arbre = (Tree) malloc(sizeof(Sheet));
+	else {
+		Tree p = *arbre;
+		while (p!=NULL)
+		{
+			if (value > p->value)
+				p = p->right;
+			else
+				p = p->left;
+		}
+		p = (Tree)malloc(sizeof(Sheet));
+		p->value = value;
+		p->left = NULL;
+		p->right = NULL;
+	}
+}
+
 
 Sheet* createSheet(int value) {
 	Sheet* s1 = (Sheet*) malloc(sizeof(Sheet));
